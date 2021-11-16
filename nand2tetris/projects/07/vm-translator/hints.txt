@@ -1,0 +1,31 @@
+// (argument, LCL, this, that)
+
+pop segment i => addr = segmentPointer + i, SP--, *addr = *SP
+push segment i => addr = segmentPointer + i, *SP = *addr, SP++
+
+
+// (constant)
+push constant i => *SP = i, SP++
+no pop constant operation
+
+// (static)
+@foo.5 
+M=D 
+@foo.2
+M=D 
+
+// (temp) (5-12) 8 place memory segment
+push temp i => addr = 5 + i, *SP = *addr, SP++
+pop temp i => addr = 5 + i, SP--, *addr = *SP
+
+// (pointer)
+push pointer 0/1 => *SP = THIS/THAT, SP++
+pop pointer 0/1 => SP--, THIS/THAT = *SP
+ 
+
+//RAM ADDRESS   |  Usage
+    0-15            Sixteen virtual registers
+    16-255          Static variables 
+    256-2047        Stack 
+    2048-16483      Heap(used to store ojects and arrays)
+    16384-24575     Memory Mapped I/O

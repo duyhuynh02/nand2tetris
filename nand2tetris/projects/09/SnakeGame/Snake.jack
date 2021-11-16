@@ -1,0 +1,152 @@
+class Snake {
+    field Array posX;
+    field Array posY; 
+    field int direction; 
+    field int length;
+
+    constructor Snake new() {
+        let posX = Array.new(256); //for rows on the board 
+        let posY = Array.new(512); //for columns on the board 
+        let posX[0] = 0;
+        let posY[0] = 0;
+        let direction = 2;
+        let length = 1;
+
+        return this;
+    }
+
+    method int headXGetter() {
+        return posX[0];
+    }
+
+    method int headYGetter() {
+        return posY[0]; 
+    }
+
+    method int getScore() {
+        return length;
+    }
+
+    method void chooseDirection() {
+        /** User choose which way to go next */
+        var int key;
+
+        let key = Keyboard.keyPressed();
+
+        //Snake choose to go left
+        if (((key = 130) & (length = 1)) |  ((key = 130) & (length > 1) & (~(direction = 4)))) {
+            let direction = 3;
+        }
+
+        //Snake choose to go up
+        if (((key = 131) & (length = 1)) |  ((key = 131) & (length > 1) & (~(direction = 2)))) {
+            let direction = 1;
+        }
+
+        //Snake choose to go right
+        if (((key = 132) & (length = 1)) |  ((key = 132) & (length > 1) & (~(direction = 3)))) {
+            let direction = 4;
+        }
+
+        //Snake choose to go down 
+        if (((key = 133) & (length = 1)) |  ((key = 133) & (length > 1) & (~(direction = 1)))) {
+            let direction = 2;
+        }
+
+        return;
+    }
+
+    method void move() {  
+        /** Based on what user choose, the snake will move */
+
+        var int moveX, moveY; 
+        var int i;
+
+        let i = length - 1;
+        while (i > 0) {
+            let posX[i] = posX[i - 1];
+            let posY[i] = posY[i - 1];
+            let i = i - 1;
+        }
+
+
+        if (direction = 1) {let moveX = -1; let moveY = 0; } //Up
+        if (direction = 2) {let moveX = 1; let moveY = 0; }  //Down 
+        if (direction = 3) {let moveX = 0; let moveY = -1; } //Left
+        if (direction = 4) {let moveX = 0; let moveY = 1; }  //Right
+
+        let posX[0] = posX[0] + moveX;
+        let posY[0] = posY[0] + moveY;
+
+        return;
+    }
+
+    method void render() {
+        /** Draw snake on the board */
+
+        var int i, drawX, drawY;
+
+        let i = 0;
+
+        while (i < length) {
+            let drawX = posX[i] * 16; 
+            let drawY = posY[i] * 16;
+            do Screen.drawRectangle(drawY, drawX, drawY + 15, drawX + 15);
+            let i = i + 1;
+        }
+
+        return;
+    }
+
+    method boolean isAlive() {
+        /** Check whether the snake alive */
+        if ( OutOfBoard() ) { return false; }
+        if ( suicide() ) { return false; }
+        return true;
+    }
+
+    method boolean OutOfBoard() {
+        /** Check whether snake out of the board */
+        if ((posX[0] < 0) | (posX[0] > 15) | (posY[0] < 0) | (posY[0] > 31)) {
+            return true;
+        } 
+        return false;
+    }
+
+    method boolean suicide(){
+        /** Check whether the snake eaten self */
+        var int i;
+
+        let i = 1;
+
+        while ((i < length) & (i > 0) ){
+            if ((posY[0] = posY[i]) & (posX[0] = posX[i])) {
+                return true;
+            }
+            let i = i + 1;
+        }
+        return false; 
+    }
+
+
+    method void grow() {    
+        /** Tail of snake grow in the array */
+        var int i;
+
+        let length = length + 1;
+        let i = length - 1;
+        let posY[i] = posY[i - 1];
+        let posX[i] = posX[i - 1];
+
+        return;
+    }
+
+    method void dispose() {
+        do Memory.deAlloc(this);
+        return;
+    } 
+
+
+
+
+}
