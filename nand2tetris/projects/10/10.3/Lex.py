@@ -11,6 +11,11 @@ class Lex:
         self._tokens = self._tokenize(self._lines)
         # print(self._tokens)
 
+    def openout(self, file):
+        self._outfile = open(file.replace('.jack', 'T.xml'), 'w')
+        self._outfile.write('<token>\n')
+
+
     def _tokenize(self, lines):
         """Return all the token in each line"""
         result = []
@@ -50,7 +55,7 @@ class Lex:
             # print((Constant.T_STR, word))
             return (Constant.T_STR, word)
         elif self._is_identifier(word):
-            print((Constant.T_ID, word))
+            # print((Constant.T_ID, word))
             return (Constant.T_ID, word)
         else:
             return (Constant.T_ERROR, word)
