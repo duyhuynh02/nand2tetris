@@ -1,7 +1,7 @@
 import re, os 
 import os
 import Constant
-
+from xml.sax.saxutils import escape
 """OS module"""
 # path = 'File.txt'
 
@@ -81,20 +81,26 @@ import Constant
 
 symbols = '{}()[].,;+-*/&|<>=~'
 
-_keyword_re = r'|'.join(Constant.keywords)
-# print(_keyword_re)
-_integer_re = r'\d+'
-_string_re = r'"\w*"'
-# _symbol_re = r'[{}()[].,;+-*/&|<>=~]' #Not sure about this - will come back later )
+# _keyword_re = r'|'.join(Constant.keywords)
+# # print(_keyword_re)
+# _integer_re = r'\d+'
+# _string_re = r'"\w*"'
+# # _symbol_re = r'[{}()[].,;+-*/&|<>=~]' #Not sure about this - will come back later )
 _symbol_re = '[' + re.escape(symbols) + ']' # [Add escape character for not alpha-numeric]
-_identifier_re = r'[\w\_]+'
-_word_re = re.compile(_keyword_re + '|' + _symbol_re + '|' + _identifier_re + '|'\
-                        + _integer_re + '|' + _string_re)
+# _identifier_re = r'[\w\_]+'
+# _word_re = re.compile(_keyword_re + '|' + _symbol_re + '|' + _identifier_re + '|'\
+#                         + _integer_re + '|' + _string_re)
 
-# print(_word_re)
+# # print(_word_re)
 
-f = open("Main.jack", "r")
+# f = open("Main.jack", "r")
 
-for line in f:
-    a = _word_re.findall(line)
-    print(a)
+# for line in f:
+#     a = _word_re.findall(line)
+#     print(a)
+
+# print(_symbol_re)
+print(symbols)
+print()
+a = escape(symbols)
+print(a)

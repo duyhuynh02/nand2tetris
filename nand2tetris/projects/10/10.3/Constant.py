@@ -39,7 +39,7 @@ keywords = [KW_CLASS, KW_METHOD, KW_FUNCTION, KW_CONSTRUCTOR, KW_INT, KW_BOOLEAN
             KW_ELSE, KW_WHILE, KW_RETURN, KW_TRUE, KW_FALSE, KW_NULL, KW_THIS]
 
 # # Tokens for sample output
-# tokens = ['keyword', 'symbol', 'integerConstant', 'stringConstant', 'identifier']
+tokens = ['keyword', 'symbol', 'integerConstant', 'stringConstant', 'identifier']
 
 # # Symbols for token type T_SYM
 symbols = '{}()[].,;+-*/&|<>=~'

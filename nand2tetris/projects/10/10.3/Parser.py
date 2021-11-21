@@ -19,17 +19,20 @@ class Parser:
             os.mkdir(out_dir)
         except OSError as e:
             pass 
+        self.lex.openout(file) #Write T_XML file 
         self._outfile = open(file.replace('.jack', '.xml'), 'w') #Write XML later. 
         # print(self._outfile)
-        self.lex.openout(file)
 
     def compile_class(self):
         self._start_non_terminal(Constant.KW_CLASS)
-        
 
 
     def _start_non_terminal(self, rule):
         self._outfile.write(f'<{rule}>\n')
+
+
+
+
 
 
 

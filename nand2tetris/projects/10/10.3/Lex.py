@@ -2,6 +2,7 @@
 use regular expression to regconize the pattern """
 import re 
 import Constant 
+from xml.sax.saxutils import escape 
 
 class Lex:
     def __init__(self, file):
@@ -10,11 +11,38 @@ class Lex:
         # print(self._lines)
         self._tokens = self._tokenize(self._lines)
         # print(self._tokens)
+        self._token_type = Constant.T_ERROR
+        self._current_value = 0
 
     def openout(self, file):
-        self._outfile = open(file.replace('.jack', 'T.xml'), 'w')
-        self._outfile.write('<token>\n')
+        self._lex_outfile = open(file.replace('.jack', 'T.xml'), 'w')
+        self._lex_outfile.write('<tokens>\n')
+        #Just for testing purpose 
+        # while self.is_token_available():
+        #     self.advance()
+        # self._lex_outfile.write('</tokens>\n')
 
+
+    def is_token_available(self):
+        return self._tokens != []
+
+    def advance(self):
+        if self.is_token_available():
+            self._token_type, self._current_value = self._tokens.pop(0)
+        else:
+            self._token_type, self._current_value = (Constant.T_ERROR, 0)
+        self._write_Txml()
+        return (self._token_type, self._current_value)
+
+    def _write_Txml(self):
+        token, value = self._token_type, self._current_value
+        token_type = Constant.tokens[token]
+        if token == 5:
+            self._lex_outfile.write(f"<ERROR>")
+        elif token == 1:
+            self._lex_outfile.write(f"<{token_type}> " + escape(value) + f" </{token_type}>\n")
+        else:
+            self._lex_outfile.write(f"<{token_type}> {value} </{token_type}>\n")
 
     def _tokenize(self, lines):
         """Return all the token in each line"""
@@ -53,7 +81,7 @@ class Lex:
             return (Constant.T_NUM, word)
         elif self._is_string(word):
             # print((Constant.T_STR, word))
-            return (Constant.T_STR, word)
+            return (Constant.T_STR, word[1:-2])
         elif self._is_identifier(word):
             # print((Constant.T_ID, word))
             return (Constant.T_ID, word)
