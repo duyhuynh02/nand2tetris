@@ -99,8 +99,12 @@ _symbol_re = '[' + re.escape(symbols) + ']' # [Add escape character for not alph
 #     a = _word_re.findall(line)
 #     print(a)
 
-# print(_symbol_re)
-print(symbols)
-print()
-a = escape(symbols)
-print(a)
+print(_symbol_re)
+# print(symbols)
+# print()
+# a = escape(symbols)
+# print(a)
+
+# a = '('
+# print(escape(a))
+
