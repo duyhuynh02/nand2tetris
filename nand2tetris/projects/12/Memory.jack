@@ -10,25 +10,89 @@
  */ 
 class Memory {
 
+    static Array ram;
+    static Array heap;
+    static Array freeList; 
+
     /** Initializes the class. */
     function void init() {
+        let ram = 0;
+        let heap = 2048;        //heapBase
+        let freeList = heap;    
+        let freeList[0] = null;            //next
+        let freeList[1] = 14334;        //length
+
+        return;
     }
 
     /** Returns the RAM value at the given address. */
-    function int peek(int address) {
+    function int peek(int address) {    
+        return ram[address];
     }
 
     /** Sets the RAM value at the given address to the given value. */
     function void poke(int address, int value) {
+        let ram[address] = value; 
+        return;
     }
 
     /** Finds an available RAM block of the given size and returns
      *  a reference to its base address. */
     function int alloc(int size) {
+        var Array block; 
+
+        if ( (freeList[1] > size + 2) | (freeList[1] = size + 2) ){
+            let freeList[1] = freeList[1] - (size + 2);
+            let block = freeList + 2 + freeList[1]; //return the block after freeList 
+            let block[0] = null;            //pointer 
+            let block[1] = size;        //size 
+        }
+        else {
+            let block = Memory.topFit(size);
+        }
+
+        return block + 2; 
+
     }
+
+    /** Best-fit heuristics to find the approriate size block to allocate */
+    function Array topFit(int size) { 
+        var Array temp, block; 
+
+        let temp = freeList; 
+
+        while (temp[1] < size + 2) {
+            if (temp[0] = null) {
+                return 0;
+            }
+            else {
+                let temp = temp[0];
+            }
+        }
+
+        let temp[1] = temp[1] - (size + 2);
+        let block = temp + 2 + temp[1]; 
+        let block[0] = null; 
+        let block[1] = size;
+
+        return block; 
+    }
+
 
     /** De-allocates the given object (cast as an array) by making
      *  it available for future allocations. */
     function void deAlloc(Array o) {
-    }    
+        //append object to the end of the freeList
+        var Array temp; 
+
+        let temp = freeList; 
+
+        while (~(temp[0] = null)) {
+            let temp = temp[0];
+        }
+        let temp[0] = o;
+        let o[0] = null; 
+        return;
+    }   
+
 }
