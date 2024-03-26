@@ -9,9 +9,9 @@ a compiler, operating system.
 Highly recommended for study purpose! 
 
 - [x] [Boolean Logic](https://github.com/duyhuynh02/nand2tetris/tree/main/nand2tetris/projects/01)
-[Boolean Arithmetic](https://github.com/duyhuynh02/nand2tetris/tree/main/nand2tetris/projects/02)
-[Sequential Logic](https://github.com/duyhuynh02/nand2tetris/tree/main/nand2tetris/projects/03)
-[Machine Language](https://github.com/duyhuynh02/nand2tetris/tree/main/nand2tetris/projects/04)
+- [x] [Boolean Arithmetic](https://github.com/duyhuynh02/nand2tetris/tree/main/nand2tetris/projects/02)
+- [x] [Sequential Logic](https://github.com/duyhuynh02/nand2tetris/tree/main/nand2tetris/projects/03)
+- [x] [Machine Language](https://github.com/duyhuynh02/nand2tetris/tree/main/nand2tetris/projects/04)
 [Computer Architecture](https://github.com/duyhuynh02/nand2tetris/tree/main/nand2tetris/projects/05) 
 [Assembler](https://github.com/duyhuynh02/nand2tetris/tree/main/nand2tetris/projects/06) 
 [Virtual Machine I: Stack Arithmetic](https://github.com/duyhuynh02/nand2tetris/tree/main/nand2tetris/projects/07)
