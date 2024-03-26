@@ -8,7 +8,7 @@ a compiler, operating system.
 
 Highly recommended for study purpose! 
 
-[Boolean Logic](https://github.com/duyhuynh02/nand2tetris/tree/main/nand2tetris/projects/01)
+[x] [Boolean Logic](https://github.com/duyhuynh02/nand2tetris/tree/main/nand2tetris/projects/01)
 [Boolean Arithmetic](https://github.com/duyhuynh02/nand2tetris/tree/main/nand2tetris/projects/02)
 [Sequential Logic](https://github.com/duyhuynh02/nand2tetris/tree/main/nand2tetris/projects/03)
 [Machine Language](https://github.com/duyhuynh02/nand2tetris/tree/main/nand2tetris/projects/04)
