@@ -7,3 +7,5 @@ In this project, I have learnt and created from basic chips (OR/AND/NAND), Virtu
 a compiler, operating system. 
 
 Highly recommended for study purpose! 
+
+[Boolean Logic]([https://pages.github.com/](https://github.com/duyhuynh02/nand2tetris/tree/main/nand2tetris/projects/01)https://github.com/duyhuynh02/nand2tetris/tree/main/nand2tetris/projects/01)
