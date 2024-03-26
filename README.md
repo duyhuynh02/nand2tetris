@@ -8,4 +8,4 @@ a compiler, operating system.
 
 Highly recommended for study purpose! 
 
-[Boolean Logic]([https://pages.github.com/](https://github.com/duyhuynh02/nand2tetris/tree/main/nand2tetris/projects/01)https://github.com/duyhuynh02/nand2tetris/tree/main/nand2tetris/projects/01)
+[Boolean Logic](https://github.com/duyhuynh02/nand2tetris/tree/main/nand2tetris/projects/01)
